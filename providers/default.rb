@@ -148,18 +148,8 @@ action :create do
 
     if force
 
-      # We force create the filesystem and we ignore failures. This is sparta, etc.
       execute mkfs_cmd do
-        ignore_failure true
-        not_if generic_check_cmd
-      end
-
-      # We really will nuke existing filesystems with this one
-      execute mkfs_cmd do
-        ignore_failure true
-        not_if do
-          ignore_existing.nil?
-        end
+        not_if { !ignore_existing && generic_check_cmd }
       end
 
     else
