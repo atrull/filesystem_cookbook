@@ -18,6 +18,7 @@
 #
 
 # We default to creating all filesystems found in the key
+unified_mode true
 
 action :create do
   # Our key is the new resource name or if not we go with filesystems
