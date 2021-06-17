@@ -25,6 +25,7 @@ default_action :create
 property :device, String
 property :size, String
 property :sparse, [true, false], default: true
+unified_mode true
 
 action :create do
   file = @new_resource.name

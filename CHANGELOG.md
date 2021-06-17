@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+- Chef 17 compatibility
+- Minimum chef version set to 15.3
+
 ## 3.0.3 (2020-11-09)
 
 - resolved cookstyle error: resources/default.rb:118:35 convention: `Style/RedundantCondition`

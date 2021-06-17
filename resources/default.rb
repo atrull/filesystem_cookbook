@@ -58,6 +58,8 @@ property  :force, [true, false], default: false
 # An additional thing to ignore existing filesystems - this will actively lose you data on unmounted filesystems if set.
 property  :ignore_existing, [true, false], default: false
 
+unified_mode true
+
 action_class do
   include FilesystemMod
 
@@ -126,7 +128,7 @@ action :create do
     # LVM
     # We use the lvm provider directly.
     lvm_logical_volume label do
-      action :nothing
+      action :create
       group vg
       size size
       stripes unless stripes.nil?
@@ -134,20 +136,20 @@ action :create do
       not_if do
         vg.nil?
       end
-    end.run_action(:create)
+    end
 
     # File-backed
     # We use the local filebackend provider, to which we feed some variables including the loopback device we want.
     backed_device = device
     filesystem_filebacked file do
-      action :nothing
+      action :create
       device backed_device
       size size
       sparse sparse
       not_if do
         file.nil?
       end
-    end.run_action(:create)
+    end
   elsif new_resource.device_defer && !::File.exist?(device) && !FilesystemMod::NET_FS_TYPES.include?(fstype)
     return
   end

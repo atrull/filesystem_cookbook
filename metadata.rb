@@ -6,7 +6,7 @@ license          'Apache-2.0'
 version          '3.0.4'
 source_url       'https://github.com/sous-chefs/filesystem'
 issues_url       'https://github.com/sous-chefs/filesystem/issues'
-chef_version     '>= 14'
+chef_version     '>= 15.3'
 
 %w(redhat centos xenserver ubuntu debian scientific amazon).each do |os|
   supports os

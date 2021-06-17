@@ -6,7 +6,7 @@ provisioner:
   product_name: chef
   product_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
   install_strategy: once
-  deprecations_as_errors: true
+  deprecations_as_errors: false
   multiple_converge: 2
 
 verifier:
